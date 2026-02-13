@@ -23,7 +23,7 @@ MMS-VPRlib/
 ├── requirements.txt        # Python dependencies
 ├── run_all.py              # Script to execute end-to-end pipeline
 └── models/
-      ├── model.ipynb             # Example notebook for model training and evaluation
+      ├── model.py               # Example notebook for model training and evaluation
       └──...                     # Additional scripts and resources
 ```
 
