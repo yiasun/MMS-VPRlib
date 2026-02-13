@@ -1,143 +1,142 @@
+# MMS-VPR
 # MMS-VPRlib
 
-Multi-Modal Street-Level Visual Place Recognition Library
+MMS-VPRlib is a multi-modal street-level dataset for visual place recognition tasks. It contains both image sequences and text sequences to facilitate robust visual place recognition research.
 
-MMS-VPRlib is a unified research library and dataset for fine-grained
-street-level visual place recognition (VPR). It supports image-only,
-text-enhanced, graph-based, and multimodal models under a consistent
-experimental framework.
-
-------------------------------------------------------------------------
-
-## Overview
-
-MMS-VPRlib provides:
-
--   A fine-grained street-level dataset
--   A unified experimental pipeline
--   Classical machine learning baselines
--   Deep visual encoders
--   Vision-language pretrained models
--   VPR-specific architectures
--   Graph-based multimodal models
-
-------------------------------------------------------------------------
 
 ## Quick Start
 
 Clone the repository and install dependencies:
 
-git clone https://github.com/yiasun/MMS-VPRlib.git\
-cd MMS-VPRlib\
+```bash
+git clone https://github.com/yiasun/MMS-VPRlib.git
+cd MMS-VPRlib
 pip install -r requirements.txt
-
-------------------------------------------------------------------------
+```
 
 ## Project Structure
+In our model code, the initial parent folder for image data is named raw, and the text dataset file is Sample Data Texts.xlsx.Note that languagemodel.ipynb requires downloading the GPT-2 model at runtime, so it is not recommended to include the model files in the repository—instead, let run_all.py handle downloading them.
+```
+MMS-VPRlib/
+├── README.md               # Project documentation
+├── sample_data_texts.xlsx  # Text data in Excel format
+├── requirements.txt        # Python dependencies
+├── run_all.py              # Script to execute end-to-end pipeline
+└── models/
+      ├── model.py               # Example notebook for model training and evaluation
+      └──...                     # Additional scripts and resources
+```
 
-MMS-VPRlib/\
-├── README.md\
-├── requirements.txt\
-├── run.py\
-├── sample_data_texts.xlsx\
-├── models/\
-├── scripts/\
-│ └── classification/\
-└── raw/
-
-------------------------------------------------------------------------
-
-## Dataset Setup
+## Dataset Overview
 
 ### Image Data
 
-Images must be organized in the following structure:
+The dataset includes large numbers of JPEG images organized by class directories. Each class folder contains multiple `.jpg` images representing street-level scenes.
 
-raw/\
-├── Class_A/\
-│ ├── img1.jpg\
-│ ├── img2.jpg\
-│ └── ...\
-├── Class_B/\
-│ ├── img1.jpg\
-│ └── ...\
-└── ...
+### Text Data
 
-Each folder represents one fine-grained location class.
+Textual information is provided in a single Excel file (`sample_data_texts.xlsx`) with the following columns:
 
-Default image root: ../raw
+| Column Name            | Description                         |
+| ---------------------- | ----------------------------------- |
+| Type                   | Category of the record              |
+| Primary Class (Merged) | Merged primary class label          |
+| Code                   | Unique identifier code              |
+| Location in the Map    | Geographic location reference       |
+| Index                  | Numeric index                       |
+| List of Store Names    | Comma-separated list of store names |
 
-------------------------------------------------------------------------
+## Model Performance Highlights
 
-### Text Metadata
+The top three performing models in our benchmarks are: 
+- **HeteroGNN + ResNet**
+- **ResNet-50** 
+- **ViT-B/16**  
 
-Text metadata file:
+## Quick Parameter Tuning
 
-sample_data_texts.xlsx
+All configurable parameters live in `run_all.py`. You can override any default setting on the command line. For example, to train the logistic regression baseline for 20 epochs:
 
-Columns:
+```bash
+python run_all.py --model lr --num_epochs 20
+## Usage
+```
+### Testing with Code
 
--   Type\
--   Primary Class (Merged)\
--   Code\
--   Location in the Map\
--   Index\
--   List of Store Names
+To test the results using the provided code, organize your files as follows:
 
-------------------------------------------------------------------------
+```
 
-## Supported Model Categories
+    MMS-VPRlib/
+    ├── README.md
+    ├── sample_data_texts.xlsx
+    ├── requirements.txt
+    ├── run_all.py
+    ├── models/
+    │   ├── model.ipynb
+    │   └── …
+    └── Edge/
+        ├── Eh1-1/
+        │   ├── image1.jpg
+        │   ├── image2.jpg
+        │   └── …
+        ├── Eh1-2/
+        │   ├── image1.jpg
+        │   ├── image2.jpg
+        │   └── …
+        └── Eh2-1/
+            ├── image1.jpg
+            ├── image2.jpg
+            └── …
 
-Classical ML: - LR - SVC - RF - KNN - GNB - MLP
+```
+The initial folder of the image dataset set in our model is ../raw. The above is a demonstration.
 
-Deep Encoders: - ResNet - ViT
+### Running the Full Pipeline
 
-Vision-Language: - CLIP - BLIP
+If you want to execute all scripts at once, install the following additional dependencies:
 
-VPR-Specific: - BoQ - SALAD - CosPlace - EigenPlaces - MixVPR -
-Patch-NetVLAD - SFRS
+```bash
+pip install nbformat>=5.0.0 nbconvert>=6.0.0
+```
 
-Graph-Based: - GCN - GAT - HGNN - ResNet+HGNN - R2Former
+Then move `run_all.py` into the target folder and run:
 
-------------------------------------------------------------------------
-
-## Running Experiments
-
-Example:
-
-python run.py --model lr --num_epochs 20
-
-All parameters can be overridden via command line.
-
-------------------------------------------------------------------------
-
-## Evaluation Metrics
-
--   Accuracy
--   Precision
--   Recall
--   F1-score
-
-------------------------------------------------------------------------
+```bash
+python run_all.py
+```
 
 ## Dependencies
 
-Python \>= 3.8\
-pillow \>= 8.0\
-numpy \>= 1.19\
-pandas \>= 1.1\
-scikit-learn \>= 0.24\
-torch \>= 1.8\
-torch-geometric \>= 2.0\
-transformers \>= 4.6\
-matplotlib \>= 3.3
+This project requires Python 3.7 or higher and depends on the following libraries:
 
-Install:
+| Package         | Minimum Version |
+| --------------- | --------------- |
+| pillow          | 8.0.0           |
+| numpy           | 1.19.0          |
+| pandas          | 1.1.0           |
+| scikit-learn    | 0.24.0          |
+| torch           | 1.8.0           |
+| torch-geometric | 2.0.0           |
+| transformers    | 4.6.0           |
+| matplotlib      | 3.3.0           |
+| seaborn         | 0.11.0          |
 
+Install core dependencies with:
+
+```bash
+pip install \
+  pillow numpy pandas scikit-learn \
+  torch torch-geometric transformers \
+  matplotlib seaborn
+```
+
+For exact version control, use `requirements.txt`:
+
+```bash
 pip install -r requirements.txt
-
-------------------------------------------------------------------------
+```
 
 ## Contact
 
-rsun155@aucklanduni.ac.nz
+If you have any questions or suggestions, please contact: [rsun155@aucklanduni.ac.nz](mailto:rsun155@aucklanduni.ac.nz)
