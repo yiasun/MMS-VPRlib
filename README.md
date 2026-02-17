@@ -26,8 +26,8 @@ MMS-VPRlib implements a modular end-to-end pipeline covering data ingestion, pre
 ## Key Features
 
 - 🔁 **Unified Pipeline**: Standardized data loading, preprocessing, training, and evaluation across 10+ VPR datasets
-- 🧩 **Modular Architecture**: Plug-and-play components for signal enhancement, alignment, and feature-level / score-level fusion
-- 🤖 **17+ Baselines**: Covers shallow ML, CNN, Transformer, vision-language (CLIP, BLIP), and graph-based (GCN, GAT, HGNN) methods
+- 🔧 **Modular Architecture**: Plug-and-play components for signal enhancement, alignment, and feature-level / score-level fusion
+- 📐 **17+ Baselines**: Covers shallow ML, CNN, Transformer, vision-language (CLIP, BLIP), and graph-based (GCN, GAT, HGNN) methods
 - 📷 **Multimodal**: Native support for image, video, and text inputs—go beyond image-only VPR
 - 📊 **Reproducible Benchmarking**: Fixed splits, hyperparameter configs, and detailed runtime/memory reporting
 - 🏙️ **New Dataset**: First-class support for MMS-VPR — the first pedestrian-only, day-night, multimodal VPR dataset with a 7-year temporal span
@@ -182,21 +182,21 @@ Key findings:
 
 ### Performance on Unimodal Datasets
 
-Performance comparison across five standard VPR datasets (best results in **bold**, second-best <u>underlined</u>):
+Performance comparison across five standard VPR datasets (**bold** = best, *italic* = second-best per column):
 
 | Model | Tokyo Acc | New College Acc | Pittsburgh Acc | Nordland Acc | Cambridge Acc |
-|-------|:---------:|:---------------:|:--------------:|:------------:|:-------------:|
+|---|:-:|:-:|:-:|:-:|:-:|
 | PatchNetVLAD | 0.846 | 0.144 | 0.870 | 0.430 | 0.569 |
 | R2Former | 0.771 | 0.722 | 0.910 | 0.710 | 0.946 |
 | ViT | 0.606 | 0.641 | 0.701 | 0.523 | 0.815 |
 | SFRS | 0.579 | 0.659 | 0.880 | 0.150 | 0.959 |
 | BLIP | 0.674 | 0.686 | 0.761 | 0.583 | 0.818 |
 | MixVPR | 0.789 | 0.758 | 0.904 | 0.730 | 0.971 |
-| EigenPlaces | <u>0.927</u> | 0.773 | **0.920** | 0.681 | 0.968 |
+| EigenPlaces | *0.927* | 0.773 | **0.920** | 0.681 | 0.968 |
 | ResNet | 0.794 | 0.775 | 0.879 | **0.861** | 0.968 |
 | CosPlace | 0.816 | 0.781 | 0.900 | 0.560 | 0.974 |
-| CLIP | 0.843 | <u>0.790</u> | 0.901 | 0.742 | 0.930 |
-| BoQ | **0.975** | 0.787 | <u>0.920</u> | <u>0.817</u> | <u>0.984</u> |
+| CLIP | 0.843 | *0.790* | 0.901 | 0.742 | 0.930 |
+| BoQ | **0.975** | 0.787 | *0.920* | *0.817* | *0.984* |
 | SALAD | 0.804 | **0.844** | 0.611 | 0.744 | **0.987** |
 
 Key findings: **BoQ** achieves the strongest and most consistent results across datasets. **SALAD** excels on New College and Cambridge. Transformer-based and multimodal approaches consistently outperform traditional CNN baselines.
