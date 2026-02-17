@@ -19,7 +19,7 @@ MMS-VPRlib implements a modular end-to-end pipeline covering data ingestion, pre
 <!-- Workflow diagram: place Workflow-MMSVPRlib.png in the repo's images/ folder and it will render here -->
 ![MMS-VPRlib Workflow](images/Workflow-MMSVPRlib.png)
 
-*Figure 1: End-to-end workflow of MMS-VPRlib — from multimodal data input through pre-processing, signal enhancement, alignment & fusion, to standardized evaluation.*
+*Workflow of MMS-VPRlib — from multimodal data input through pre-processing, signal enhancement, alignment & fusion, to standardized evaluation.*
 
 ---
 
@@ -173,7 +173,7 @@ MMS-VPRlib unifies data loading and evaluation protocols across diverse VPR benc
 
 ![MMS-VPR Results Heatmap](images/mmsvpr_results_heatmap-new.png)
 
-*Figure 2: Model performances on the MMS-VPR dataset (Accuracy, Precision, Recall, F1). Results are reported as mean values.*
+*Model performances on the MMS-VPR dataset (Accuracy, Precision, Recall, F1). Results are reported as mean values.*
 
 Key findings:
 - **CosPlace** leads with Accuracy: 0.933, F1: 0.924, demonstrating that VPR-oriented metric learning provides clear gains over generic visual feature extraction
