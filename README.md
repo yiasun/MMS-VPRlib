@@ -8,7 +8,7 @@
 
 **MMS-VPRlib** is a unified open-source benchmarking library for multimodal street-level Visual Place Recognition (VPR). It consolidates state-of-the-art VPR datasets and 17+ baseline models—spanning shallow ML, CNN, Transformer, vision-language, and graph-based architectures—under a standardized, reproducible evaluation pipeline. Beyond traditional image-only paradigms, MMS-VPRlib natively supports **image, video, and text** modalities, enabling systematic exploration of multimodal fusion strategies.
 
-> **Dataset**: The MMS-VPR dataset (110,529 images, 2,527 videos, 208 locations) is hosted separately on [Hugging Face](https://huggingface.co/datasets/Yiwei-Ou/MMS-VPR). MMS-VPRlib also supports Pittsburgh, Tokyo 24/7, Nordland, New College, Cambridge, and more.
+> **Dataset**: The MMS-VPR dataset (110,529 images, 2,527 videos, 208 locations) is hosted separately on [Hugging Face](https://huggingface.co/datasets/Yiwei-Ou/MMS-VPR). MMS-VPRlib also supports other VPR datasets, such as Pittsburgh, Tokyo 24/7, Nordland, New College, and Cambridge.
 
 ---
 
